@@ -8,8 +8,9 @@ class TemperatureApp extends StatefulWidget {
   _TemperatureAppState createState() => _TemperatureAppState();
 }
 
-class _TemperatureAppState extends State<TemperatureApp> {
+class _TemperatureAppState extends State<TemperatureApp> with SingleTickerProviderStateMixin {
   bool _isTitleLarge = true;
+  bool _isTemperatureScreenVisible = true; // Control the visibility of the TemperatureScreen
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,24 @@ class _TemperatureAppState extends State<TemperatureApp> {
             ),
           ],
         ),
-        body: Center(child: TemperatureScreen()),
+        body: AnimatedOpacity(
+          opacity: _isTemperatureScreenVisible ? 1.0 : 0.0,
+          duration: Duration(milliseconds: 500),
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 500),
+            padding: EdgeInsets.all(_isTemperatureScreenVisible ? 16.0 : 0.0),
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isTemperatureScreenVisible = !_isTemperatureScreenVisible; // Toggle visibility
+                  });
+                },
+                child: TemperatureScreen(),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
