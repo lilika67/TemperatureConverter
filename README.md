@@ -1,8 +1,8 @@
-#Temperature Converter App
-##Purpose
+# Temperature Converter App
+## Purpose
 This Flutter application allows users to convert temperatures between Fahrenheit and Celsius, and vice versa. It includes a history of conversions, maintains accurate results up to two decimal places, and is fully responsive across orientations.
 
-##Architecture
+## Architecture
 The app consists of a single stateful widget TemperatureConverterHome that manages state using setState. The temperature input, conversion selection, and results are managed modularly with clean, reusable functions.
 
 ##Key Components:
